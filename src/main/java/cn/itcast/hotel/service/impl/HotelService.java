@@ -21,14 +21,20 @@ import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
 import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.sort.SortBuilder;
+import org.elasticsearch.search.aggregations.Aggregation;
+import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.Aggregations;
+import org.elasticsearch.search.aggregations.bucket.terms.Terms;
+import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class HotelService extends ServiceImpl<HotelMapper, Hotel> implements IHotelService {
@@ -97,41 +103,52 @@ public class HotelService extends ServiceImpl<HotelMapper, Hotel> implements IHo
     }
 
     @Override
-    public PageResult hotelFilters(RequestParams requestParams) {
-//        SearchRequest searchRequest = new SearchRequest("hotel");
-//        BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
-//        if(!StringUtils.isEmpty(requestParams.getKey())){
-//            boolQueryBuilder.must(QueryBuilders.matchQuery("all", requestParams.getKey()));
-//        }
-//        if(!StringUtils.isEmpty(requestParams.getStarName())){
-//            boolQueryBuilder.filter(QueryBuilders.termQuery("starName", requestParams.getStarName()));
-//        }
-//        if(!StringUtils.isEmpty(requestParams.getCity())){
-//            boolQueryBuilder.filter(QueryBuilders.termQuery("city", requestParams.getCity()));
-//        }
-//
-//        if(!StringUtils.isEmpty(requestParams.getBrand())){
-//            boolQueryBuilder.filter(QueryBuilders.termQuery("brand", requestParams.getBrand()));
-//        }
-//
-//        if(requestParams.getMinPrice() != null){
-//            RangeQueryBuilder priceRangeQueryBuilder = QueryBuilders.rangeQuery("price");
-//
-//            boolQueryBuilder.filter(priceRangeQueryBuilder.gte(requestParams.getMinPrice()));
-//            priceRangeQueryBuilder.lte(requestParams.getMaxPrice());
-//        }
-//
-//        searchRequest.source().query(boolQueryBuilder);
-//
-//        try {
-//            SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
-//
-//            return handleResult(response);
-//        }catch (Exception e){
-//            throw new RuntimeException("ES查询错误");
-//        }
-        return null;
+    public Map<String, List<String>> hotelFilters(RequestParams requestParams) {
+        try {
+            SearchRequest searchRequest = new SearchRequest("hotel");
+            searchRequest.source().size(0);
+            BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
+            buildBasicQuery(requestParams, boolQueryBuilder);
+            searchRequest.source().query(boolQueryBuilder);
+
+
+            TermsAggregationBuilder brandAggregationBuilder = AggregationBuilders.terms("brandAgg").field("brand").size(100);
+            TermsAggregationBuilder cityAggregationBuilder = AggregationBuilders.terms("cityAgg").field("city").size(100);
+            TermsAggregationBuilder starNameAggregationBuilder = AggregationBuilders.terms("starNameAgg").field("starName").size(100);
+            searchRequest.source().aggregation(brandAggregationBuilder);
+            searchRequest.source().aggregation(cityAggregationBuilder);
+            searchRequest.source().aggregation(starNameAggregationBuilder);
+
+            SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
+
+            Map<String, List<String>> result = new HashMap<>();
+            Aggregations aggregations = response.getAggregations();
+
+            processAggregation("brand", aggregations, result);
+
+            processAggregation("city", aggregations, result);
+
+            processAggregation("starName", aggregations, result);
+
+            return result;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
+
+    private void processAggregation(String name, Aggregations aggregations, Map<String, List<String>> result) {
+        Terms brandTerms = aggregations.get(name + "Agg");
+        List<? extends Terms.Bucket> buckets = brandTerms.getBuckets();
+        List<String> lists = new ArrayList<>();
+
+        for (Terms.Bucket bucket : buckets) {
+            String key = bucket.getKeyAsString();
+            lists.add(key);
+        }
+        result.put(name, lists);
+
+    }
+
 
     private PageResult handleResult(SearchResponse response) {
 

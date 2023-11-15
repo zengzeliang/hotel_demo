@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f32c94e7-5e8d-4eb7-a4a5-09b5a60ffe9b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/controller/HotelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/IHotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/IHotelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/impl/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/impl/HotelService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +80,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.HotelDemoApplication">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HotelDocumentTest.testBulkRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hotel-demo" />
       <extension name="coverage">
@@ -186,7 +201,7 @@
       <workItem from="1699671463846" duration="4591000" />
       <workItem from="1699797691874" duration="5975000" />
       <workItem from="1699857978466" duration="17045000" />
-      <workItem from="1699960047511" duration="2864000" />
+      <workItem from="1699960047511" duration="5788000" />
     </task>
     <servers />
   </component>
@@ -197,39 +212,24 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/cn/itcast/hotel/HotelSearchTest.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/controller/HotelController.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="4" />
+          <line>28</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/impl/HotelService.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="9" />
+          <line>107</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/impl/HotelService.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="11" />
+          <line>132</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/impl/HotelService.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/controller/UploadController.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/impl/HotelService.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="15" />
+          <line>121</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
