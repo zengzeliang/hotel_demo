@@ -1,6 +1,6 @@
 package cn.itcast.hotel;
 
-import cn.itcast.hotel.consyants.HotelConstants;
+import cn.itcast.hotel.constants.HotelConstants;
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.client.RequestOptions;
@@ -15,9 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 
 @SpringBootTest

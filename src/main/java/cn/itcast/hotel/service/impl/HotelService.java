@@ -28,6 +28,11 @@ import org.elasticsearch.search.aggregations.bucket.terms.Terms;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
+import org.elasticsearch.search.suggest.Suggest;
+import org.elasticsearch.search.suggest.SuggestBuilder;
+import org.elasticsearch.search.suggest.SuggestionBuilder;
+import org.elasticsearch.search.suggest.completion.CompletionSuggestion;
+import org.elasticsearch.search.suggest.completion.CompletionSuggestionBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -130,6 +135,37 @@ public class HotelService extends ServiceImpl<HotelMapper, Hotel> implements IHo
 
             processAggregation("starName", aggregations, result);
 
+            return result;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * @Author zengzeliang
+     * @Description //自动补全
+     * @Date 2023/11/15 2:38 下午
+     * @Param [key]
+     * @return java.util.List<java.lang.String>
+     **/
+    @Override
+    public List<String> hotelSuggestion(String key) {
+
+        SearchRequest searchRequest = new SearchRequest("hotel");
+
+        searchRequest.source().suggest(new SuggestBuilder().addSuggestion(
+                "hotelSuggest", new CompletionSuggestionBuilder("suggestion").prefix(key).skipDuplicates(true).size(10)));
+        List<String> result = new ArrayList<>();
+        try {
+            SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
+
+            CompletionSuggestion hotelSuggest = response.getSuggest().getSuggestion("hotelSuggest");
+            List<CompletionSuggestion.Entry.Option> options = hotelSuggest.getOptions();
+
+            for (CompletionSuggestion.Entry.Option option : options) {
+                String opt = option.getText().string();
+                result.add(opt);
+            }
             return result;
         }catch (Exception e){
             throw new RuntimeException(e);

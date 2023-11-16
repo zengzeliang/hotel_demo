@@ -12,4 +12,6 @@ public interface IHotelService extends IService<Hotel> {
     PageResult hotelList(RequestParams requestParams);
 
     Map<String, List<String>> hotelFilters(RequestParams requestParams);
+
+    List<String> hotelSuggestion(String key);
 }

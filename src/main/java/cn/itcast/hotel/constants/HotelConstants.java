@@ -1,4 +1,4 @@
-package cn.itcast.hotel.consyants;
+package cn.itcast.hotel.constants;
 
 public class HotelConstants {
     public static final String HOTEL_MAPPING = "{\n" +

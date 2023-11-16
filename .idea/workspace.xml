@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f32c94e7-5e8d-4eb7-a4a5-09b5a60ffe9b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/config/RocketMqConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/mq/ReceiveHotelMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/consyants/HotelConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/constants/HotelConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/controller/HotelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/pojo/HotelDoc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/pojo/HotelDoc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/IHotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/IHotelService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/impl/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/impl/HotelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cn/itcast/hotel/HotelDocumentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cn/itcast/hotel/HotelDocumentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cn/itcast/hotel/HotelIndexTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cn/itcast/hotel/HotelIndexTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cn/itcast/hotel/HotelSearchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cn/itcast/hotel/HotelSearchTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,19 +84,18 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.itcast.hotel.config" />
       <recent name="cn.itcast.hotel" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.HotelDemoApplication">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -182,10 +189,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HotelDocumentTest.testBulkRequest" />
         <item itemvalue="JUnit.HotelSearchTest.testSearchHighLight" />
         <item itemvalue="JUnit.HotelSearchTest.testSearchMatchAll" />
         <item itemvalue="JUnit.HotelIndexTest.testMapKeyForArray" />
-        <item itemvalue="JUnit.HotelDocumentTest.testBulkRequest" />
         <item itemvalue="JUnit.HotelDocumentTest.testUpdateDocument" />
       </list>
     </recent_temporary>
@@ -201,40 +208,53 @@
       <workItem from="1699671463846" duration="4591000" />
       <workItem from="1699797691874" duration="5975000" />
       <workItem from="1699857978466" duration="17045000" />
-      <workItem from="1699960047511" duration="5788000" />
+      <workItem from="1699960047511" duration="10647000" />
+      <workItem from="1700097238995" duration="7839000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/controller/HotelController.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="19" />
+          <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/mq/ReceiveHotelMessage.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/impl/HotelService.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="21" />
+          <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/mq/ReceiveHotelMessage.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/impl/HotelService.java</url>
-          <line>132</line>
-          <option name="timeStamp" value="23" />
+          <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/mq/ReceiveHotelMessage.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/service/impl/HotelService.java</url>
-          <line>121</line>
-          <option name="timeStamp" value="25" />
+          <url>file://$PROJECT_DIR$/src/main/java/cn/itcast/hotel/mq/ReceiveHotelMessage.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="org.apache.rocketmq.common.message.MessageClientExt" memberName="bornHost" />
         <PinnedItemInfo parentTag="org.elasticsearch.action.search.SearchRequest" memberName="source" />
       </pinned-members>
     </pin-to-top-manager>
